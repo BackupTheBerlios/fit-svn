@@ -1,0 +1,6 @@
+too_many_test_a:
+  size: 20
+  string: "A"
+too_many_test_fs_read:
+  size: 20
+  string: "%s"

