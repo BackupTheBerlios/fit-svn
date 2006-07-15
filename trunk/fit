@@ -2,7 +2,7 @@
 
 $: << "lib"
 
-require 'YAML'
+require 'yaml'
 require 'optparse'
 require 'pp'
 
