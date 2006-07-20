@@ -1,0 +1,22 @@
+Fault Injection Toolkit
+author: raymond medeiros (grandmasterlogic@gmail.com)
+
+[installation]
+
+simply run:
+
+./setup.rb
+
+[documentation]
+
+* http://fit.berlios.de
+
+[examples]
+
+Modify one of the scripts in doc/examples to reflect the destination
+host and port number then execute it like this:
+
+./fit doc/examples/http.fit
+./fit doc/examples/irc.fit
+./fit doc/examples/smtp.fit
+

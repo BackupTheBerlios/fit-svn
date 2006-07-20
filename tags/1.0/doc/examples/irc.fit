@@ -1,0 +1,66 @@
+#Internet Relay Chat (IRC)
+#author: raymond medeiros (grandmasterlogic@gmail.com)
+#
+
+faults "include/std.faults"
+faults "include/test.faults"
+
+option 'host','localhost'
+option 'port','6667'
+option 'session','multi' #treat each injection as a new session
+
+inject "USER ::FAULT:: bb cc :dd"
+inject "USER aa ::FAULT:: cc :dd"
+inject "USER aa bb ::FAULT:: :dd"
+inject "USER aa bb cc :::FAULT::"
+inject "USER aaa bbb ccc :ddd\r\n, NICK EEEEEE"
+inject "JOIN ::FAULT::"
+inject "PART ::FAULT::"
+inject "SERVER ::FAULT:: 1 :foobar"
+inject "SERVER test ::FAULT:: :foobar"
+inject "SERVER test 1 :::FAULT::"
+inject "OPER ::FAULT::"
+inject "OPER test ::FAULT::"
+inject "JOIN #::FAULT::"
+inject "JOIN #test ::FAULT::"
+inject "JOIN \&::FAULT::"
+inject "JOIN \&test ::FAULT::"
+inject "PART #::FAULT::"
+inject "JOIN #::FAULT::PART#::FAULT::"
+inject "LIST ::FAULT::"
+inject "INVITE ::FAULT:: #test"
+inject "INVITE foo #::FAULT::"
+inject "KICK #::FAULT:: bar"
+
+['c','h','i','k','l','m','o','y','u'].each do |s|
+	sleep 5
+	inject "STATS #{s} ::FAULT::"
+end
+
+inject "LINKS ::FAULT::"
+inject "TIME ::FAULT::"
+inject "CONNECT ::FAULT::"
+inject "TRACE ::FAULT::"
+inject "ADMIN ::FAULT::"
+inject "INFO ::FAULT::"
+inject "PRIVMSG foo ::FAULT::"
+inject "PRIVMSG ::FAULT:: bar"
+inject "NOTICE foo ::FAULT::"
+inject "NOTICE ::FAULT:: bar"
+inject "WHO ::FAULT::"
+inject "WHOIS ::FAULT::"
+inject "WHOWAS ::FAULT::"
+inject "WHOWAS foo 1 ::FAULT::"
+inject "KILL foo ::FAULT::"
+inject "KILL ::FAULT:: bar"
+inject "PING ::FAULT::"
+inject "PONG ::FAULT::"
+inject "ERROR ::FAULT::"
+inject "AWAY ::FAULT::"
+inject "SUMMON ::FAULT::"
+inject "SUMMON foo ::FAULT::"
+inject "USERS ::FAULT::"
+inject "WALLOPS ::FAULT::"
+inject "USERHOST ::FAULT::"
+inject "ISON ::FAULT::"
+

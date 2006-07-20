@@ -1,0 +1,74 @@
+#!/usr/bin/env ruby
+
+$: << "lib"
+
+require 'yaml'
+require 'optparse'
+require 'pp'
+
+require 'interpreter'
+require 'fuzzer'
+require 'fitwriter'
+
+trap ("INT") do
+	puts
+	puts "shutting down..."
+	exit(0)
+end
+
+#ARGV << '-h' if ARGV.empty?
+class Options
+	def self.parse	
+		@options=Hash.new
+		OptionParser::new do |opts|
+			opts.banner = "Fault Injection Toolkit\r\nusage: #{$0} [options] <script>"
+			opts.separator ''
+			opts.on('-a','--ascii FILE','generate script form ascii tcpdump') do |file|
+				@options['ascii']=file
+			end
+			opts.on('-b','--bin FILE','generate script form bin tcpdump') do |file|
+				@options['bin']=file
+			end
+			opts.on('-v','--verbose','show debugging information') do
+				@options['verbose']=true
+			end
+			opts.on_tail('-h', '--help', 'Show this message') do
+				puts opts
+				puts
+				exit
+			end
+			opts.parse!(ARGV)
+		end
+		@options
+	end
+end
+
+opts=Options.parse
+
+if opts["ascii"]
+	headers=FitHeadersWriter.headers(opts["ascii"],"multi")
+	ascii=FitAsciiWriter.injections(opts["ascii"])
+	puts headers
+	puts ascii
+	exit
+elsif opts["bin"]
+	headers=FitHeadersWriter.headers(opts["bin"],"single")
+	binary=FitBinWriter.injections(opts["bin"])
+	puts headers
+	puts binary 
+	exit
+end
+
+if ARGV.last.nil?
+	script=""
+	STDIN.each do |line|
+		script+=line
+	end
+else
+	script_file=ARGV.pop
+	f=File.open(script_file)
+	script=f.readlines
+	f.close
+end
+i=Interpreter.new(opts)
+i.run(script.to_s)
