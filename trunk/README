@@ -1,19 +1,11 @@
 Fault Injection Toolkit
 author: raymond medeiros (grandmasterlogic@gmail.com)
 
-[requirements]
+[installation]
 
-In order to use the FIT Writer you must install Ruby Pcap:
+simply run:
 
-cd src/third_party/pcap
-ruby extconf.rb
-make
-make install
-
-Mac OS X (PPC) Users should preform these additional steps prior to installing Ruby Pcap:
-
-mv extconf_ppc.rb extconf.rb
-mv mkmf_ppc.rb mkmf.rb
+./setup.rb
 
 [documentation]
 
