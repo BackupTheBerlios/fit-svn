@@ -12,7 +12,7 @@ class FitWriterUtil
 			results['host']=pkt.ip_dst
 			if pkt.tcp?
 				results['port']=pkt.tcp_dport
-			elsif pkt.udp
+			elsif pkt.udp?
 				results['port']=pkt.udp_dport
 			end
 		end
