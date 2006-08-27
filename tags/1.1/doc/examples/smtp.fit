@@ -1,0 +1,33 @@
+#Simple Mail Transfer Protocol (SMTP)
+#author: raymond medeiros (grandmasterlogic@gmail.com)
+#
+
+from="testuser@localhost"
+to="testuser@localhost"
+
+cmds=%w{
+"EXPN ::FAULT::"
+"EHLO ::FAULT::"
+"MAIL FROM: ::FAULT::"
+"MAIL FROM: <#{from}> ::FAULT::"
+"MAIL FROM: <#{from}> RET=::FAULT::"
+"MAIL FROM: <#{from}> ENVID=::FAULT::"
+"ETRN ::FAULT::"
+"ETRN \@::FAULT::"
+"MAIL FROM: <#{from}>RCPT TO: <::FAULT::>"
+"MAIL FROM: <#{from}>RCPT TO: <#{to}> ::FAULT::"
+"MAIL FROM: <#{from}>RCPT TO: <#{to}> NOTIFY=::FAULT::"
+"MAIL FROM: <#{from}>RCPT TO: <#{to}> ORCPT=::FAULT::"
+"HELP ::FAULT::"
+"VRFY ::FAULT::"
+"RSET ::FAULT::"
+"AUTH mechanism ::FAULT::"
+"::FAULT::"
+}
+
+cmds.each do |cmd|
+	put "HELO localhost"
+	inject cmd 
+	put "QUIT"
+end
+

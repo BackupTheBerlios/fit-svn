@@ -1,0 +1,114 @@
+too_many_a:
+  size: 10000 
+  string: "A"
+too_many_backslash:
+  size: 500
+  string: "\\"
+too_many_forwardslash:
+  size: 500
+  string: "/"
+too_many_fs_read:
+  size: 1024
+  string: "%s"
+too_many_fs_write:
+  size: 1024
+  string: "%n" 
+too_many_fs_expand:
+  size: 1
+  string: "%.10000d"
+ansi_format_string_99:
+  size: 1024
+  string: "\x99"
+ansi_format_string_CD:
+  size: 1024
+  string: "\xCD"
+ansi_format_string_CB:
+  size: 1024
+  string: "\xCB"
+large_number_255:
+  size: 1
+  string: "255"
+large_number_256:
+  size: 1
+  string: "256"
+large_number_257:
+  size: 1
+  string: "257"
+large_number_65535:
+  size: 1
+  string: "65535"
+large_number_65536:
+  size: 1
+  string: "65536"
+large_number_65537:
+  size: 1
+  string: "65537"
+large_number_16777215:
+  size: 1
+  string: "16777215"
+large_number_16777216:
+  size: 1
+  string: "16777216"
+large_number_16777217:
+  size: 1
+  string: "16777217"
+large_number_0xfffffff:
+  size: 1
+  string: "0xfffffff"
+large_number_-1:
+  size: 1
+  string: "-1"
+large_number_-268435455:
+  size: 1
+  string: "-268435455"
+large_number_-20:
+  size: 1
+  string: "-20"
+misc_strings_0:
+  size: 1
+  string: "/"
+misc_strings_1:
+  size: 1
+  string: "%0xa"
+misc_strings_2:
+  size: 1
+  string: "+"
+misc_strings_3:
+  size: 1
+  string: "<"
+misc_strings_4:
+  size: 1
+  string: ">"
+misc_strings_5:
+  size: 1
+  string: "%"
+misc_strings_6:
+  size: 1
+  string: "-"
+misc_strings_7:
+  size: 1
+  string: "+"
+misc_strings_8:
+  size: 1
+  string: "*"
+misc_strings_9:
+  size: 1
+  string: "."
+misc_strings_10:
+  size: 1
+  string: ":"
+misc_strings_11:
+  size: 1
+  string: "&"
+misc_strings_12:
+  size: 1
+  string: "%u000"
+misc_strings_13:
+  size: 1
+  string: "\r"
+misc_strings_14:
+  size: 1
+  string: "\r\n"
+misc_strings_15:
+  size: 1
+  string: "\n"
